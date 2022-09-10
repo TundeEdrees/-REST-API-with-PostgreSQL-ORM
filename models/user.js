@@ -49,8 +49,7 @@ const User = sequelize.define('User', {
             }
             else {
                 this.setDataValue('password', hashSync(value, 8))
-            }
-            
+            }          
         }
     },
     phone : {
@@ -110,7 +109,6 @@ User.findByCred = async (email, password) => {
     }
     const userr = await User.findOne({where:{email}, attributes:['id', 'name', 'email','phone']})
     return userr
-
 }
 User.genToken = async (email) => {
     const user = await User.findOne({where:{email}})
